@@ -14,7 +14,7 @@ zway.devices[40].instances[0].commandClasses[43].data.currentScene.bind(function
 			zway.devices[31].instances[0].SwitchMultilevel.Set(30);
 			zway.devices[32].instances[0].SwitchMultilevel.Set(30);
 			zway.devices[33].instances[0].SwitchMultilevel.Set(30);
-			zway.devices[34].instances[0].SwitchMultilevel.Set(30);
+			zway.devices[41].instances[0].SwitchMultilevel.Set(30);
 
 			clicType = 'SIMPLEON';
 
@@ -30,14 +30,14 @@ zway.devices[40].instances[0].commandClasses[43].data.currentScene.bind(function
 			zway.devices[31].instances[0].SwitchMultilevel.Set(99);
 			zway.devices[32].instances[0].SwitchMultilevel.Set(99);
 			zway.devices[33].instances[0].SwitchMultilevel.Set(99);
-			zway.devices[34].instances[0].SwitchMultilevel.Set(99);
+			zway.devices[41].instances[0].SwitchMultilevel.Set(99);
 
 			clicType = 'DOUBLEON';
 
 		break;
 		case 26:
 			zway.devices[38].instances[0].SwitchMultilevel.Set(0);
-			zway.devices[34].instances[0].SwitchMultilevel.Set(0);
+			zway.devices[41].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[33].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[32].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[31].instances[0].SwitchMultilevel.Set(0);
@@ -53,7 +53,7 @@ zway.devices[40].instances[0].commandClasses[43].data.currentScene.bind(function
 		break;
 		case 24:
 			zway.devices[38].instances[0].SwitchMultilevel.Set(0);
-			zway.devices[34].instances[0].SwitchMultilevel.Set(0);
+			zway.devices[41].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[33].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[32].instances[0].SwitchMultilevel.Set(0);
 			zway.devices[31].instances[0].SwitchMultilevel.Set(0);
@@ -87,8 +87,9 @@ zway.devices[40].instances[0].commandClasses[43].data.currentScene.bind(function
 	http.request({
 		url: 'http://10.0.1.105:5005/Salon/state',
 		async: true,
+		contentType: 'application/json',
 		success: function(res) {
-			if (res.data.playerState != 'PLAYING') {
+			if (res.data.playerState !== 'PLAYING') {
 				switch (clicType) {
 					case 'SIMPLEON':
 						http.request({url:"http://10.0.1.105:5005/Salon/volume/9"});
